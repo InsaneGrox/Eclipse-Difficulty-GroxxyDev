@@ -3,10 +3,12 @@ Hooks:PostHook(TweakDataVR, "init", "eclipse_init", function(self)
 	self.long_range_damage_reduction = {0, 0}
 end)
 
---This code made me want to commit kingpin green dozer, all it does is disable perk deck dash bonuses, and yet it took me hours to get it to work... -Groxxy
+--remove perk deck dash bonuses
+--this made me want to commit kingpin green dozer, it somehow took me hours to make this code work.
 TweakDataVR.init_specializations = function(self, tweak_data)
 end
 
+--remove skill tree dash bonuses
 --I was going to just remove this block, but payday 2 crashing has forced my hand, no clue what's even keeping the game alive at this point but I'm too afraid to remove anything else.
 TweakDataVR.init_skills = function(self, tweak_data)
 	self.post_warp = {

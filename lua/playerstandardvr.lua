@@ -1,11 +1,12 @@
---This code is literally just to remove shooting while interacting, I'd love to figure out a cleaner way to do this than just replacing the function but I'm lazy.
+--Prevent shooting while interacting
+--I don't know how to do this any other way than literally just copying the whole function, sorry creepy.
 Hooks:OverrideFunction(PlayerStandardVR, "_check_action_primary_attack",
 function(self, t, input)
 	local new_action1, new_action2 = nil
 	local action_wanted = input.btn_primary_attack_state or input.btn_primary_attack_release or input.btn_akimbo_fire_state or input.btn_akimbo_fire_release
 
 	if action_wanted then
-		local action_forbidden = self:_changing_weapon() or self:_interacting() or self:_is_meleeing() or self:_is_throwing_projectile(input) or self:_is_deploying_bipod() or self:is_switching_stances()
+		local action_forbidden = self:_changing_weapon() or self:_interacting() or self:_is_meleeing() or self:_is_throwing_projectile(input) or self:_is_deploying_bipod() or self:is_switching_stances() --add self:_interacting
 
 		if not action_forbidden then
 			self._queue_reload_interupt = nil
