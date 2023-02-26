@@ -147,7 +147,7 @@ local kick_tables = {
 local spray_tables = {
 	ar_left_low = {
 		pattern = {
-			{ up = 0.4, down = 0.4, left = -0.04, right = 0.05 },
+			{ up = 0.7, down = 0.7, left = -0.04, right = 0.05 },
 			{ up = 1.3, down = 1.3, left = -0.15, right = 0.14 },
 			{ up = 1.8, down = 1.8, left = 0.15, right = 0.3 },
 			{ up = 1.5, down = 1.5, left = -0.3, right = -0.15 },
@@ -167,7 +167,7 @@ local spray_tables = {
 	},
 	ar_right_low = {
 		pattern = {
-			{ up = 0.4, down = 0.4, left = -0.05, right = 0.04 },
+			{ up = 0.7, down = 0.7, left = -0.05, right = 0.04 },
 			{ up = 1.3, down = 1.3, left = -0.15, right = -0.14 },
 			{ up = 1.8, down = 1.8, left = -0.15, right = -0.3 },
 			{ up = 1.5, down = 1.5, left = 0.3, right = 0.15 },
@@ -187,7 +187,7 @@ local spray_tables = {
 	},
 	ar_left_mid = {
 		pattern = {
-			{ up = 0.5, down = 0.5, left = -0.04, right = 0.05 },
+			{ up = 0.8, down = 0.8, left = -0.04, right = 0.05 },
 			{ up = 1.5, down = 1.5, left = -0.2, right = 0.19 },
 			{ up = 2, down = 2, left = 0.25, right = 0.4 },
 			{ up = 1.6, down = 1.6, left = -0.4, right = -0.25 },
@@ -207,7 +207,7 @@ local spray_tables = {
 	},
 	ar_right_mid = {
 		pattern = {
-			{ up = 0.5, down = 0.5, left = 0.04, right = -0.05 },
+			{ up = 0.8, down = 0.8, left = 0.04, right = -0.05 },
 			{ up = 1.5, down = 1.5, left = 0.2, right = -0.19 },
 			{ up = 2, down = 2, left = -0.25, right = -0.4 },
 			{ up = 1.6, down = 1.6, left = 0.4, right = 0.25 },
@@ -227,7 +227,7 @@ local spray_tables = {
 	},
 	ar_left_high = {
 		pattern = {
-			{ up = 0.6, down = 0.6, left = -0.04, right = 0.05 },
+			{ up = 0.8, down = 0.9, left = -0.04, right = 0.05 },
 			{ up = 1.6, down = 1.65, left = -0.2, right = 0.19 },
 			{ up = 2.1, down = 2.1, left = 0.25, right = 0.4 },
 			{ up = 1.75, down = 1.75, left = -0.4, right = -0.25 },
@@ -247,7 +247,7 @@ local spray_tables = {
 	},
 	ar_right_high = {
 		pattern = {
-			{ up = 0.6, down = 0.6, left = 0.04, right = -0.05 },
+			{ up = 0.8, down = 0.9, left = 0.04, right = -0.05 },
 			{ up = 1.6, down = 1.65, left = 0.2, right = -0.19 },
 			{ up = 2.1, down = 2.1, left = -0.25, right = -0.4 },
 			{ up = 1.75, down = 1.75, left = 0.4, right = 0.25 },
@@ -507,6 +507,22 @@ self.scout.AMMO_MAX = total_ammo_tables.secondary_sniper
 self.scout.AMMO_PICKUP = pickup_tables.secondary_sniper
 self.scout.kick = kick_tables.sniper_low
 
+-- North Star
+self.victor.AMMO_MAX = total_ammo_tables.secondary_sniper
+self.victor.stats.damage = 145
+self.victor.stats_modifiers = {damage = 2}
+self.victor.AMMO_PICKUP = pickup_tables.secondary_sniper
+self.victor.kick = kick_tables.sniper_auto
+self.victor.categories = {"snp", "ng"}
+
+-- Aran
+self.contender.AMMO_MAX = total_ammo_tables.secondary_sniper
+self.contender.stats.damage = 120
+self.contender.stats_modifiers = {damage = 4}
+self.contender.fire_mode_data.fire_rate = 60 / 70
+self.contender.AMMO_PICKUP = pickup_tables.secondary_sniper
+self.contender.kick = kick_tables.sniper_mid
+
 
 
 -- LMGs and Miniguns
@@ -580,6 +596,15 @@ self.m60.AMMO_PICKUP = pickup_tables.lmg
 self.m60.kick = kick_tables.lmg_high
 self.m60.spray = spray_tables.lmg_right
 self.m60.recoil_recovery_timer = recovery_tables.high
+
+-- Akron
+self.hcar.stats.damage = 80
+self.hcar.stats.concealment = 0
+self.hcar.AMMO_MAX = total_ammo_tables.ar_low
+self.hcar.AMMO_PICKUP = pickup_tables.ar_low
+self.hcar.kick = kick_tables.lmg_high
+self.hcar.spray = spray_tables.lmg_left
+self.hcar.recoil_recovery_timer = recovery_tables.high
 
 -- verstchektshscxd
 self.hk51b.stats.damage = 75
@@ -918,6 +943,24 @@ self.l85a2.AMMO_PICKUP = pickup_tables.ar_mid
 self.l85a2.kick = kick_tables.ar_mid
 self.l85a2.spray = spray_tables.ar_right_mid
 self.l85a2.recoil_recovery_timer = recovery_tables.mid
+
+-- Rodion
+self.tkb.AMMO_MAX = total_ammo_tables.ar_mid
+self.tkb.AMMO_PICKUP = pickup_tables.ar_mid
+self.tkb.kick = kick_tables.ar_mid
+self.tkb.spray = spray_tables.ar_right_mid
+self.tkb.recoil_recovery_timer = recovery_tables.mid
+self.tkb.fire_mode_data.volley = {
+	spread_mul = 1,
+	damage_mul = 1,
+	ammo_usage = 3,
+	rays = 3,
+	can_shoot_through_wall = false,
+	can_shoot_through_shield = true,
+	can_shoot_through_enemy = true,
+	muzzleflash = "effects/payday2/particles/weapons/tkb_muzzle",
+	muzzleflash_silenced = "effects/payday2/particles/weapons/tkb_suppressed"
+}
 
 -- Tempest
 self.komodo.AMMO_MAX = total_ammo_tables.ar_mid
@@ -1582,6 +1625,8 @@ self.x_g18c.stats.recoil = 12
 self.x_g18c.stats.reload = 8
 self.x_g18c.stats.damage = 45
 self.x_g18c.kick = kick_tables.akimbo_pistol_auto
+self.x_g18c.spray = spray_tables.ar_left_low
+self.x_g18c.recoil_recovery_timer = recovery_tables.high
 
 -- Czechs
 self.x_czech.AMMO_MAX = total_ammo_tables.akimbo_pis_high
@@ -1592,6 +1637,8 @@ self.x_czech.stats.spread = 15
 self.x_czech.stats.reload = 8
 self.x_czech.stats.damage = 45
 self.x_czech.kick = kick_tables.akimbo_pistol_auto
+self.x_g18c.spray = spray_tables.ar_right_low
+self.x_g18c.recoil_recovery_timer = recovery_tables.high
 
 -- Chimano Compacts
 self.jowi.AMMO_MAX = total_ammo_tables.akimbo_pis_mid
